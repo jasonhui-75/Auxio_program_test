@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Jason" />
+    <meta name="description" content="Jason's portfolio" />
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .hov{
+            opacity:0;
+            transition-duration: 1.25s;
+        }
+        .hov:hover{
+            opacity:1;
+            transition-duration: 1s;
+        }
+        .img1
+        {
+            background-image: url(img/i2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       .imgPre{
+            border:2px solid;
+       }
+       .img_container
+       {
+        height:200px;
+        width:300px;
+        border-radius: 6px;
+        overflow:hidden;
+        margin-bottom: 10px;
+       }
+       .pc
+       {
+        display: flex;
+  flex-wrap: wrap;
+       }
+       .img_container img {
+           height:auto;
+           width:auto;
+           object-fit: cover;
+       }
+
+       .img_container span {
+           top:0%;
+           right: 10%;
+           color: red;
+           font-size:28px;
+           font-weight:normal;
+
+       }
+    </style>
+    <title>Auxio</title>
+  </head>
+  <body>
+    <div class="container-fluid p-5">
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="d-flex justify-content-center">
+                <div class="col-md-3 px-0 ">
+                    <img class=" rounded img-fluid"   src="img/logo.png" alt="Logo"/>
+                </div>
+            </div>  
+        </div>
+        <section>
+            <div class="row justify-content-start no-gutters mb-5 mb-lg-0">
+                <div class="col-xl-12 col-lg-12">
+                    <h3 style="color: rgb(57, 104, 207);" >About Us </h3>
+                </div>
+            </div>
+            <div class="row  mb-5 mb-lg-0">  
+                <div class=" col-xl-6 col-lg-6 ">
+                    <div class ="img1">
+                        <a href ="https://www.facebook.com/auxio.co/">
+                            <img class="img-fluid hov "  src="img/i1.png" alt="Image"/>
+                        </a>    
+                    </div>    
+                </div>
+                <div class="col-xl-6 col-lg-6 ">
+                    <p class="lead pl-5 ">
+                        AUXIO was created with one sole purpose, to bring you the most innovative products from around the globe into the Asia region market.
+                    </p>
+                    <p class="lead pl-5 ">
+                        AUXIO brings you the most innovative products from around the globe into the Asia region market.
+                        AUXIO為你搜羅來自世界各地的科技小玩意，更會每日介紹最新最潮的科技小資訊。
+                    </p>
+                </div>
+            </div>
+        </section>   
+        <div class = "row justify-conetent-start ml-1 mt-4">
+            <div class = " w-100">
+                <div class = " d-flex justify-content-start ">
+                    <h3 style="color: rgb(57, 104, 207);" >Photo </h3>
+                    <form class ="form" action="#" method="post" id="f">
+                        <input type="file" name="Image" id="img" multiple="" class="d-none" onchange="photo_select()">
+                        <button onclick="document.getElementById('img').click()" class="btn btn-primary btn-small" type="button" >+</button>
+                    </form>
+                </div>
+                <div class =" d-flex flex-warp justify-conetent-start pc" id="photos-container">
+                    
+                </div>
+            </div>
+
+        </div>
+            <script type="text/JavaScript">
+                var photos = [];
+                function photo_select(){
+                   
+                    var image = document.getElementById('img').files;
+                    for(i = 0; i < image.length; i++)
+                    {
+                        photos.push({
+                            "name" : image[i], 
+                            "url" : URL.createObjectURL(image[i]),
+                            "file" : image[i]
+                        })
+                    }
+                    document.getElementById('f').reset();
+                    document.getElementById('photos-container').innerHTML = photo_show();
+                }
+                
+                function photo_show()
+                {
+                    var image = "";
+                    photos.forEach((i) => {
+                        
+                            image +='<div class=" img_container d-flex flex-warp justify-content-start position-relative col-3 "> <img src="'+i.url+'" alt="Image"> <span class="col-3" onclick ="delete_photo('+photos.indexOf(i)+')">&times;</span> </div>';
+                        
+                       
+                        
+                    })
+                    return image;
+                }
+                function delete_photo(e) 
+                {
+                    photos.splice(e, 1)
+                    document.getElementById('photos-container').innerHTML = photo_show();
+                }
+            </script>
+        </section>   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
