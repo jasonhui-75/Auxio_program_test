@@ -31,7 +31,7 @@
        .img_container
        {
         height:200px;
-        width:300px;
+        width:100%;
         border-radius: 6px;
         overflow:hidden;
         margin-bottom: 10px;
@@ -43,7 +43,7 @@
        }
        .img_container img {
            height:auto;
-           width:auto;
+           width:100%;
            object-fit: cover;
        }
 
@@ -129,7 +129,7 @@
                     var image = "";
                     photos.forEach((i) => {
                         
-                            image +='<div class=" img_container d-flex flex-warp justify-content-start position-relative col-3 "> <img src="'+i.url+'" alt="Image"> <span class="col-3" onclick ="delete_photo('+photos.indexOf(i)+')">&times;</span> </div>';
+                            image +='<div class=" img_container d-flex flex-warp justify-content-start position-relative col-3 "> <img src="'+i.url+'" alt="Image"> <span class="position-absolute s" onclick ="delete_photo('+photos.indexOf(i)+')">&times;</span> </div>';
                         
                        
                         
